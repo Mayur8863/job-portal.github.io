@@ -1,5 +1,4 @@
 <?php
-//include auth_session.php file on all user panel pages
 include("auth_session.php");
 ?>
 <?php include 'header.php' ?>
@@ -7,18 +6,13 @@ include("auth_session.php");
     require('db.php');
     // When form submitted, insert values into the database.
     if (isset($_REQUEST['job'])) {
-        // $company_name = stripslashes($_REQUEST['company_name']);
         $company_name=$_REQUEST['company_name'];
         $position=$_REQUEST['position'];
         $job_desc=$_REQUEST['job_desc'];
         $ctc=$_REQUEST['ctc'];
-        // $sql = "INSERT INTO `users`( `name`, `email`, `password`, `phone_no`) VALUES ('$name','$email','$password','$number')";
         $sql = "INSERT INTO `jobs`(`CompanyName`, `Position`, `JobDescription`, `CTC`) VALUES ('$company_name','$position','$job_desc','$ctc')";
         $result   = mysqli_query($conn, $sql);
         if ($result) {
-            // echo "<div class='content1'>
-            //       <h3>Details successfully.</h3><br/>
-            //       ";
         } else {
             echo "";
         }
@@ -66,7 +60,6 @@ include("auth_session.php");
                     include('db.php');
                     $sql="SELECT `CompanyName`, `Position`, `CTC` FROM `jobs`";
                     $result=mysqli_query($conn,$sql);
-                    // $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
                     $i=0;
                     if($result-> num_rows > 0)
                     {
@@ -88,8 +81,6 @@ include("auth_session.php");
             </tbody>
           </table>
       </div>
-
-
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 </html>
